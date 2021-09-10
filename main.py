@@ -14,7 +14,12 @@ start = timer()
 while len(choices) > 0:
     c = random.choice(choices)
     a = input(str(c[0]) + " x " + str(c[1]) + " = ")
-    i = int(a)
+    try:
+        i = int(a)
+    except ValueError:
+        input(a + " couldn't be converted to a number. Press enter to continue")
+        system("cls")
+        continue
     if i == c[0] * c[1]:
         correct_ct += 1
         choices.remove(c)
